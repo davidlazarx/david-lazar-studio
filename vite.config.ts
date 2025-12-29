@@ -5,24 +5,11 @@ import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
   base: "/david-lazar-studio/",
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-}));
 
-export default defineConfig(({ mode }) => ({
-  base: "/david-lazar-studio/",
-
+  // TEMP for debugging (remove later if you want)
   build: {
     sourcemap: true,
-    minify: false, // temporary: makes stack traces readable
+    minify: false,
   },
 
   server: {
