@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/david-lazar-studio/",
+  base: "/",
 
   // TEMP for debugging (remove later if you want)
   build: {
