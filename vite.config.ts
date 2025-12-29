@@ -16,3 +16,23 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+
+export default defineConfig(({ mode }) => ({
+  base: "/david-lazar-studio/",
+
+  build: {
+    sourcemap: true,
+    minify: false, // temporary: makes stack traces readable
+  },
+
+  server: {
+    host: "::",
+    port: 8080,
+  },
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+}));
