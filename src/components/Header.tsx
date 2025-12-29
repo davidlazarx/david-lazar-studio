@@ -5,9 +5,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -27,8 +25,10 @@ const Header = () => {
           : "bg-transparent"
       }`}
     >
-      <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
+      {/* ✅ allow wrapping on small screens + slightly smaller padding */}
+      <nav className="container mx-auto px-4 md:px-6 py-3 md:py-4 flex flex-wrap items-center justify-between gap-y-2">
+        {/* ✅ prevent logo from shrinking */}
+        <a href="#" className="flex items-center gap-3 group shrink-0">
           <img
             src={logo}
             alt="David Lazar Logo"
@@ -39,12 +39,12 @@ const Header = () => {
           </span>
         </a>
 
-        <ul className="flex items-center gap-8">
+        <ul className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 md:gap-8">
           {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
-                className="font-body text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"
+                className="font-body text-xs md:text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300 whitespace-nowrap"
               >
                 {item.label}
               </a>
